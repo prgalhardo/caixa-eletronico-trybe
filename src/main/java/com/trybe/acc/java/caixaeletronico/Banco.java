@@ -1,6 +1,8 @@
 package com.trybe.acc.java.caixaeletronico;
-import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Classe: Banco.
+ */
 
 public class Banco {
 
@@ -11,7 +13,7 @@ public class Banco {
     /* https://acervolima.com/gerar-string-aleatoria-de-determinado-tamanho-em-java/ */
     StringBuilder numberOfAccount = new StringBuilder();
 
-    for (int i = 0; i <= 9; i ++) {
+    for (int i = 0; i <= 9; i++) {
       int number = (int) Math.floor(Math.random() * 10);
       numberOfAccount.append(number);
     }
