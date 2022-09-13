@@ -1,10 +1,14 @@
 package com.trybe.acc.java.caixaeletronico;
 
+import java.util.ArrayList;
+
+
 /**
  * Classe: Banco.
  */
 
 public class Banco {
+  ArrayList<PessoaCliente> arrayPessoasClientes = new ArrayList<PessoaCliente>();
 
   /**
    * Método: Gerar Nova Conta.
@@ -18,6 +22,15 @@ public class Banco {
       numberOfAccount.append(number);
     }
     return numberOfAccount.toString();
+  }
+
+  /**
+   * Método: Adicionar Pessoa Cliente.
+   */
+  public PessoaCliente adicionarPessoaCliente(PessoaCliente pessoaCliente) {
+    arrayPessoasClientes.add(pessoaCliente);
+    return pessoaCliente;
+
   }
 
 }
