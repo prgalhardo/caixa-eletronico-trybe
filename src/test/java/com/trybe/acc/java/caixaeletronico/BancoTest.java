@@ -20,7 +20,10 @@ class BancoTest {
   @Test
   @DisplayName("2 - Testa o método adicionar pessoa cliente retorna o objeto pessoa cliente.")
   void adicionarPessoaClienteTest() {
-    fail("Não implementado");
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente("Priscila Silva", "421.949.798-67", "012345");
+    PessoaCliente pessoaClienteTest = banco.adicionarPessoaCliente(pessoaCliente);
+    assertEquals(pessoaClienteTest, pessoaCliente);
 
   }
 
