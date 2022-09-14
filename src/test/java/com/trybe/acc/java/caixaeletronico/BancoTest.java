@@ -5,6 +5,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @DisplayName("Testes para a classe Banco")
 class BancoTest {
@@ -42,18 +47,26 @@ class BancoTest {
   @Test
   @DisplayName("4 - Testa se o método transferir fundos está transferindo corretamente.")
   void depositarTestTransferirFundosTestmostrarExtratoTest() {
+    ByteArrayOutputStream saida = new ByteArrayOutputStream();
+    PrintStream impressao = System.out;
     Banco banco = new Banco();
     PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
     banco.adicionarPessoaCliente(pessoaCliente);
     Conta cCCliente = new Conta("Corrente", pessoaCliente, banco);
     Conta cPCliente = new Conta("Poupança", pessoaCliente, banco);
-    banco.adicionarConta(cCCliente);
-    banco.adicionarConta(cPCliente);
-    banco.depositar(pessoaCliente, 0, 1000.00);
-    banco.transferirFundos(pessoaCliente, 0, 1, 500.00);
+    pessoaCliente.adicionarConta(cCCliente);
+    pessoaCliente.adicionarConta(cPCliente);
+    PessoaCliente loginCliente = banco.pessoaClienteLogin(cpf, senha);
+    System.setOut(new PrintStream(saida));
+    banco.depositar(loginCliente, 0, 1000.00);
+    banco.transferirFundos(loginCliente, 0, 1, 500.00);
+    banco.mostrarExtrato(pessoaCliente, 0);
+    String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 
-    assertEquals(pessoaCliente.retornarSaldoContaEspecifica(0), 500.00);
-    assertEquals(pessoaCliente.retornarSaldoContaEspecifica(1), 500.00);
+    assertEquals("Depósito realizado em: " + dateTime + "\n"
+            + "Transferência de 500.00 realizado em: " + dateTime + "\n",
+            saida.toString());
+    System.setOut(impressao);
   }
 
   @Test

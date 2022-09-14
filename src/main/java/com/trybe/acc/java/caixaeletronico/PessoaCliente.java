@@ -82,8 +82,16 @@ public class PessoaCliente {
       System.out.println(conta.retornarResumoConta());
     }
   }
-
   public String getCpf() {
     return cpf;
+  }
+  public String getNomeCompleto() {
+    return nomeCompleto;
+  }
+  public String getSenha() {
+    return senha;
+  }
+  public ArrayList<Conta> getContas() {
+    return contas;
   }
 }

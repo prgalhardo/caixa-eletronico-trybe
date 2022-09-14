@@ -61,8 +61,10 @@ public class Banco {
           int paraConta,
           double quantia
   ) {
-    arrayContas.get(daConta).adicionarTransacao(quantia * (-1), "Depósito realizado.");
-    arrayContas.get(paraConta).adicionarTransacao(quantia, "Depósito recebido.");
+    pessoaCliente.adicionarTransacaoContaEspecifica(daConta, quantia * (-1), "Depósito realizado.");
+    pessoaCliente.adicionarTransacaoContaEspecifica(paraConta, quantia, "Depósito recebido.");
+//    arrayContas.get(daConta).adicionarTransacao(quantia * (-1), "Depósito realizado.");
+//    arrayContas.get(paraConta).adicionarTransacao(quantia, "Depósito recebido.");
   }
 
   /**
@@ -73,7 +75,8 @@ public class Banco {
           int daConta,
           double quantia
   ) {
-    pessoaCliente.adicionarTransacaoContaEspecifica(daConta, -quantia, "Saque realizado.");
+    pessoaCliente.adicionarTransacaoContaEspecifica(daConta, quantia * (-1), "Saque realizado.");
+//    arrayContas.get(daConta).adicionarTransacao(quantia, "Saque realizado.");
   }
 
   /**
@@ -85,6 +88,7 @@ public class Banco {
           double quantia
   ) {
     pessoaCliente.adicionarTransacaoContaEspecifica(paraConta, quantia, "Depósito realizado.");
+//    arrayContas.get(paraConta).adicionarTransacao(quantia, "Depósito realizado.");
   }
 
   /**

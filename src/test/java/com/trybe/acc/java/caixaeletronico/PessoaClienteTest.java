@@ -1,8 +1,12 @@
 package com.trybe.acc.java.caixaeletronico;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 @DisplayName("Teste dos métodos da classe PessoaCliente")
 class PessoaClienteTest {
@@ -14,10 +18,13 @@ class PessoaClienteTest {
   @Test
   @DisplayName("12 - Testa o construtor da classe Pessoa Cliente.")
   void construtorTest() {
-    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    ByteArrayOutputStream saida = new ByteArrayOutputStream();
+    PrintStream impressao = System.out;
+    System.setOut(new PrintStream(saida));
+    new PessoaCliente(nomeCompleto, cpf, senha);
 
-
-
+    assertEquals("Nova pessoa cliente " + nomeCompleto + " com CPF: " + cpf + " criada!\n",
+            saida.toString());
   }
 
   @Test
