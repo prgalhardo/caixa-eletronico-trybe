@@ -40,9 +40,5 @@ public class Transacao {
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     return LocalDateTime.now().format(formato);
   }
-
-  /**
-   * Método:
-   */
 }
 

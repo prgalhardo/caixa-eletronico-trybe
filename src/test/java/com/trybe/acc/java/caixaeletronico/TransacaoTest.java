@@ -25,7 +25,6 @@ class TransacaoTest {
     Transacao transacao = new Transacao(500.00, "Transação realizada.");
 
     assertEquals(500.00, transacao.getQuantia());
-
   }
 
   @Test
