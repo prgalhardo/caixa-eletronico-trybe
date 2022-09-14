@@ -14,7 +14,7 @@ class TransacaoTest {
   void construtorTest() {
     Transacao transacao = new Transacao(500.00, "Transação realizada.");
 
-    assertEquals(500.00, transacao.getQuantia());
+    assertEquals(500.00, transacao.quantia);
     assertEquals("Transação realizada.", transacao.descricao);
   }
 
@@ -22,7 +22,9 @@ class TransacaoTest {
   @Test
   @DisplayName("22 - Testa o método Getter do atributo quantia.")
   void getQuantiaTest() {
-    fail("Não implementado");
+    Transacao transacao = new Transacao(500.00, "Transação realizada.");
+
+    assertEquals(500.00, transacao.getQuantia());
 
   }
 
