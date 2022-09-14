@@ -61,8 +61,8 @@ public class Banco {
           int paraConta,
           double quantia
   ) {
-    pessoaCliente.adicionarTransacaoContaEspecifica(daConta, -quantia, "Depósito realizado.");
-    pessoaCliente.adicionarTransacaoContaEspecifica(paraConta, quantia, "Depósito recebido.");
+    arrayContas.get(daConta).adicionarTransacao(quantia * (-1), "Depósito realizado.");
+    arrayContas.get(paraConta).adicionarTransacao(quantia, "Depósito recebido.");
   }
 
   /**

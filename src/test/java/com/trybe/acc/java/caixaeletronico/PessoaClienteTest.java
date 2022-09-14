@@ -6,11 +6,17 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Teste dos métodos da classe PessoaCliente")
 class PessoaClienteTest {
+  String nomeCompleto = "Priscila Silva";
+  String cpf = "421.949.798-67";
+  String senha = "012345";
+  String tipoConta = "Corrente";
 
   @Test
   @DisplayName("12 - Testa o construtor da classe Pessoa Cliente.")
   void construtorTest() {
-    fail("Não implementado");
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+
+
 
   }
 
