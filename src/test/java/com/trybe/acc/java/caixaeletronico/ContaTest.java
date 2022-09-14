@@ -65,9 +65,8 @@ class ContaTest {
     Banco banco = new Banco();
     PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
     Conta conta = new Conta(tipoConta, pessoaCliente, banco);
-    String idConta = conta.getIdConta();
 
-    assertEquals(10, idConta.length());
+    assertEquals(10, conta.getIdConta().length());
   }
 
   @Test
