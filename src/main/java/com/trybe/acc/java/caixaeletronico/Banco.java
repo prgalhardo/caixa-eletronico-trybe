@@ -44,4 +44,16 @@ public class Banco {
     return null;
   }
 
+  /**
+   * Método: Transferir Fundos.
+   */
+  public void transferirFundos(
+          PessoaCliente pessoaCliente,
+          int daConta,
+          int paraConta,
+          double quantia
+  ) {
+
+  }
+
 }
