@@ -49,7 +49,7 @@ public class Conta {
   public double retornarSaldo() {
     double total = 0;
     for (Transacao transacao : transacoes) {
-      total += transacoes.getQuantia();
+      total += transacao.getQuantia();
     }
     return total;
   }
