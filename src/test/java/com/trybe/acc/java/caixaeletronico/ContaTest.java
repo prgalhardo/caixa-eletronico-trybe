@@ -1,26 +1,27 @@
 package com.trybe.acc.java.caixaeletronico;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Teste da classe Conta")
 class ContaTest {
   String nomeCompleto = "Priscila Silva";
   String cpf = "421.949.798-67";
   String senha = "012345";
+  String tipoConta = "Corrente";
 
   @Test
   @DisplayName("6 - Testa o construtor da classe conta.")
   void construtorTest() {
     Banco banco = new Banco();
     PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
-    Conta conta = new Conta("Corrente", pessoaCliente, banco);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
 
-    assertEquals("Corrente", conta.tipoConta);
-    assertEquals(pessoaCliente, conta.pessoaCliente);
-    assertEquals(10, conta.idConta.length());
+    assertEquals(tipoConta, conta.getTipoConta());
+    assertEquals(pessoaCliente, conta.getPessoaCliente());
+    assertEquals(10, conta.getIdConta().length());
   }
 
   @Test
@@ -28,7 +29,7 @@ class ContaTest {
   void adicionarTransacaoTestRetornarSaldoTest() {
     Banco banco = new Banco();
     PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
-    Conta conta = new Conta("Corrente", pessoaCliente, banco);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
 
     conta.adicionarTransacao(1000.00, "Transação realizada");
     assertEquals(1000.00, conta.retornarSaldo());
@@ -37,8 +38,18 @@ class ContaTest {
   @Test
   @DisplayName("8 - Testa o método retornar resumo está retornando uma string com os valores corretamente.")
   void retornarResumoContaTest() {
-    fail("Não implementado");
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    conta.adicionarTransacao(1000.00, "Transação realizada");
 
+    String idConta = conta.getIdConta();
+    String resumoConta = conta.retornarResumoConta();
+    String saldo = String.valueOf(conta.retornarSaldo());
+
+    assertTrue(resumoConta.contains(idConta));
+    assertTrue(resumoConta.contains(tipoConta));
+    assertTrue(resumoConta.contains(saldo));
   }
 
   @Test
