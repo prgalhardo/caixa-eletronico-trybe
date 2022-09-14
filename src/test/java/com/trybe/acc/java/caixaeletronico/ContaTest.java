@@ -25,7 +25,14 @@ class ContaTest {
 
   @Test
   @DisplayName("7 - Testa o método adicionar transação e retornar saldo da conta.")
-  void adicionarTransacaoTestRetornarSaldoTest() { fail("Não implementado"); }
+  void adicionarTransacaoTestRetornarSaldoTest() {
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta("Corrente", pessoaCliente, banco);
+
+    conta.adicionarTransacao(1000.00, "Transação realizada");
+    assertEquals(1000.00, conta.retornarSaldo());
+  }
 
   @Test
   @DisplayName("8 - Testa o método retornar resumo está retornando uma string com os valores corretamente.")
