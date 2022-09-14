@@ -96,6 +96,8 @@ class PessoaClienteTest {
     pessoaCliente.adicionarConta(conta);
     pessoaCliente.adicionarTransacaoContaEspecifica(0, 500.00, "Depósito realizado.");
 
+    assertEquals(500.00, conta.retornarSaldo());
+
   }
 
   @Test
