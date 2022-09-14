@@ -1,5 +1,6 @@
 package com.trybe.acc.java.caixaeletronico;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -97,13 +98,16 @@ class PessoaClienteTest {
     pessoaCliente.adicionarTransacaoContaEspecifica(0, 500.00, "Depósito realizado.");
 
     assertEquals(500.00, conta.retornarSaldo());
-
   }
 
   @Test
   @DisplayName("18 - Testa o método validar senha.")
   void validarSenhaTest() {
-    fail("Não implementado");
+    String senhaIncorreta = "senhaerrada";
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+
+    assertTrue(pessoaCliente.validarSenha(senha));
+    assertFalse(pessoaCliente.validarSenha(senhaIncorreta));
 
   }
 
