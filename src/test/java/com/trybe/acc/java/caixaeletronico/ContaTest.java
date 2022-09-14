@@ -62,8 +62,12 @@ class ContaTest {
   @Test
   @DisplayName("10 - Testa o método Getter do atributo idConta está retornando.")
   void getIdContaTest() {
-    fail("Não implementado");
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    String idConta = conta.getIdConta();
 
+    assertEquals(10, idConta.length());
   }
 
   @Test
