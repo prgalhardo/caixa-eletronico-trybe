@@ -5,10 +5,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 
 @DisplayName("Testes para a classe Banco")
 class BancoTest {
@@ -72,10 +68,8 @@ class BancoTest {
     banco.adicionarConta(cPCliente);
     banco.depositar(pessoaCliente, 0, 1000.00);
     banco.sacar(pessoaCliente, 0, 500.00);
-    banco.depositar(pessoaCliente, 1, 100.00);
 
     assertEquals(pessoaCliente.retornarSaldoContaEspecifica(0), 500.00);
-    assertEquals(pessoaCliente.retornarSaldoContaEspecifica(1), 100.00);
   }
 
 }

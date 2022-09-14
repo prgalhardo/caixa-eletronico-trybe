@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Banco {
   ArrayList<PessoaCliente> arrayPessoasClientes = new ArrayList<PessoaCliente>();
+  ArrayList<Conta> arrayContas = new ArrayList<Conta>();
 
   /**
    * Método: Gerar Nova Conta.
@@ -33,6 +34,13 @@ public class Banco {
   }
 
   /**
+   * Método: Adicionar Conta.
+   */
+  public void adicionarConta(Conta novaConta) {
+    arrayContas.add(novaConta);
+  }
+
+  /**
    * Método: Login Pessoa Cliente.
    */
   public PessoaCliente pessoaClienteLogin(String cpf, String senha) {
@@ -53,7 +61,37 @@ public class Banco {
           int paraConta,
           double quantia
   ) {
+    pessoaCliente.adicionarTransacaoContaEspecifica(daConta, -quantia, "Depósito realizado.");
+    pessoaCliente.adicionarTransacaoContaEspecifica(paraConta, quantia, "Depósito recebido.");
+  }
 
+  /**
+   * Método: Sacar.
+   */
+  public void sacar(
+          PessoaCliente pessoaCliente,
+          int daConta,
+          double quantia
+  ) {
+    pessoaCliente.adicionarTransacaoContaEspecifica(daConta, -quantia, "Saque realizado.");
+  }
+
+  /**
+   * Método: Depositar.
+   */
+  public void depositar(
+          PessoaCliente pessoaCliente,
+          int paraConta,
+          double quantia
+  ) {
+    pessoaCliente.adicionarTransacaoContaEspecifica(paraConta, quantia, "Depósito realizado.");
+  }
+
+  /**
+   * Método: Mostrar Extrato.
+   */
+  public void mostrarExtrato(PessoaCliente pessoaCliente, int conta) {
+    pessoaCliente.retornarExtratoContaEspecifica(conta);
   }
 
 }
