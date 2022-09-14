@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -114,16 +116,28 @@ class PessoaClienteTest {
   @Test
   @DisplayName("19 - Testa o método retornar resumo contas.")
   void retornarResumoContasTest() {
-    fail("Não implementado");
+    ByteArrayOutputStream saida = new ByteArrayOutputStream();
+    PrintStream impressao = System.out;
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    pessoaCliente.adicionarConta(conta);
+    pessoaCliente.retornarResumoContas();
+    System.setOut(new PrintStream(saida));
 
+    assertTrue(saida.toString().contains(conta.getIdConta()));
+    assertTrue(saida.toString().contains(String.valueOf(conta.retornarSaldo())));
+    assertTrue(saida.toString().contains(conta.getTipoConta()));
 
+    System.setOut(impressao);
   }
 
   @Test
   @DisplayName("20 - Testa o método Getter do atributo cpf está retornando.")
   void getCpfTest() {
-    fail("Não implementado");
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
 
+    assertEquals(cpf, pessoaCliente.getCpf());
   }
 
 }
