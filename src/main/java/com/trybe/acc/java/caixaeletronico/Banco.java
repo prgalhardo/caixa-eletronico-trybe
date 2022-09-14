@@ -30,7 +30,18 @@ public class Banco {
   public PessoaCliente adicionarPessoaCliente(PessoaCliente pessoaCliente) {
     arrayPessoasClientes.add(pessoaCliente);
     return pessoaCliente;
+  }
 
+  /**
+   * Método: Login Pessoa Cliente.
+   */
+  public PessoaCliente pessoaClienteLogin(String cpf, String senha) {
+    for (PessoaCliente pessoaCliente : arrayPessoasClientes) {
+      if (pessoaCliente.cpf == cpf && pessoaCliente.senha == senha) {
+        return pessoaCliente;
+      }
+    }
+    return null;
   }
 
 }

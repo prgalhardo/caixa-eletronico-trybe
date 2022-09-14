@@ -32,7 +32,7 @@ class BancoTest {
     Banco banco = new Banco();
     PessoaCliente pessoaCliente = new PessoaCliente("Priscila Silva", "421.949.798-67", "012345");
     banco.adicionarPessoaCliente(pessoaCliente);
-    PessoaCliente pessoaClienteLoginTest = banco.pessoaClienteLoginTest("421.949.798-67", "012345");
+    PessoaCliente pessoaClienteLoginTest = banco.pessoaClienteLogin("421.949.798-67", "012345");
     assertEquals(pessoaClienteLoginTest, pessoaCliente);
   }
 
