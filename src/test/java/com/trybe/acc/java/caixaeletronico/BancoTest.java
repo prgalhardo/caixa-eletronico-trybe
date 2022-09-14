@@ -47,8 +47,6 @@ class BancoTest {
   @Test
   @DisplayName("4 - Testa se o método transferir fundos está transferindo corretamente.")
   void depositarTestTransferirFundosTestmostrarExtratoTest() {
-    ByteArrayOutputStream saida = new ByteArrayOutputStream();
-    PrintStream impressao = System.out;
     Banco banco = new Banco();
     PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
     banco.adicionarPessoaCliente(pessoaCliente);
@@ -57,16 +55,12 @@ class BancoTest {
     pessoaCliente.adicionarConta(cCCliente);
     pessoaCliente.adicionarConta(cPCliente);
     PessoaCliente loginCliente = banco.pessoaClienteLogin(cpf, senha);
-    System.setOut(new PrintStream(saida));
     banco.depositar(loginCliente, 0, 1000.00);
     banco.transferirFundos(loginCliente, 0, 1, 500.00);
     banco.mostrarExtrato(pessoaCliente, 0);
-    String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
 
-    assertEquals("Depósito realizado em: " + dateTime + "\n"
-            + "Transferência de 500.00 realizado em: " + dateTime + "\n",
-            saida.toString());
-    System.setOut(impressao);
+    assertEquals(pessoaCliente.retornarSaldoContaEspecifica(0), 500.00);
+    assertEquals(pessoaCliente.retornarSaldoContaEspecifica(1), 500.00);
   }
 
   @Test

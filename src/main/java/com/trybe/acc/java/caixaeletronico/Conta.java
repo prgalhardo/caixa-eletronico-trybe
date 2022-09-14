@@ -11,7 +11,7 @@ public class Conta {
   String tipoConta;
   String idConta;
   PessoaCliente pessoaCliente;
-  ArrayList<Transacao> transacoes;
+  ArrayList<Transacao> transacoes = new ArrayList<>();
 
   Conta(String tipoConta, PessoaCliente pessoaCliente, Banco banco) {
     this.tipoConta = tipoConta;
