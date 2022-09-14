@@ -58,8 +58,8 @@ public class Conta {
    * Método: Retornar Resumo Conta.
    */
   public String retornarResumoConta() {
-    return "Número de identificação único: " + getIdConta() + ". Saldo: " + retornarSaldo() +
-            ". Tipo de Conta: " + getTipoConta() + ".";
+    return "Número de identificação único: " + getIdConta() + ". Saldo: " + retornarSaldo()
+            + ". Tipo de Conta: " + getTipoConta() + ".";
   }
 
   /**
@@ -67,7 +67,7 @@ public class Conta {
    */
   public void retornarExtrato() {
     for (Transacao transacao : transacoes) {
-      System.out.println(transacao.retornarResumoTransacao);
+      System.out.println(transacao.retornarResumoTransacao());
     }
   }
 

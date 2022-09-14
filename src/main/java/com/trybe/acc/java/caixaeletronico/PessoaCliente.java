@@ -43,14 +43,14 @@ public class PessoaCliente {
     return conta.retornarSaldo();
   }
 
-  /**
-   * Método: Retornar Id Conta Específica.
-   */
-  public String retornarIdContaEspecifica(int indice) {
-    Conta conta = contas.get(indice);
-    return conta.getIdConta();
-  }
-
+//  /**
+//   * Método: Retornar Id Conta Específica.
+//   */
+//  public String retornarIdContaEspecifica(int indice) {
+//    Conta conta = contas.get(indice);
+//    return conta.getIdConta();
+//  }
+//
   /**
    * Método: Retornar Extrato Conta Específica.
    */
@@ -66,22 +66,22 @@ public class PessoaCliente {
     Conta conta = contas.get(indice);
     conta.adicionarTransacao(quantia, descricao);
   }
-
-  /**
-   * Método: validarSenha.
-   */
-  public boolean validarSenha(String senha) {
-    return Objects.equals(this.senha, senha);
-  }
-
-  /**
-   * Método: retornarResumoContas.
-   */
-  public void retornarResumoContas() {
-    for (Conta conta : contas) {
-      System.out.println(conta.retornarResumoConta());
-    }
-  }
+//
+//  /**
+//   * Método: validarSenha.
+//   */
+//  public boolean validarSenha(String senha) {
+//    return Objects.equals(this.senha, senha);
+//  }
+//
+//  /**
+//   * Método: retornarResumoContas.
+//   */
+//  public void retornarResumoContas() {
+//    for (Conta conta : contas) {
+//      System.out.println(conta.retornarResumoConta());
+//    }
+//  }
   public String getCpf() {
     return cpf;
   }
