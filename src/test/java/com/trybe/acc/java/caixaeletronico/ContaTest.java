@@ -73,7 +73,12 @@ class ContaTest {
   @Test
   @DisplayName("11 - Testa o método método Getter do atributo pessoaCliente está retornando.")
   void getPessoaClienteTest() {
-    fail("Não implementado");
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    PessoaCliente testPessoaCliente = conta.getPessoaCliente();
+
+    assertEquals(testPessoaCliente, pessoaCliente);
   }
 
 }
