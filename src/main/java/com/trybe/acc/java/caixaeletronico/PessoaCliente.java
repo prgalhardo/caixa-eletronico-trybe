@@ -12,7 +12,7 @@ public class PessoaCliente {
   String nomeCompleto;
   String cpf;
   String senha;
-  ArrayList<Conta> contas;
+  ArrayList<Conta> contas = new ArrayList<>();
 
   PessoaCliente(String nomeCompleto, String cpf, String senha) {
     this.nomeCompleto = nomeCompleto;
@@ -82,15 +82,19 @@ public class PessoaCliente {
       System.out.println(conta.retornarResumoConta());
     }
   }
+
   public String getCpf() {
     return cpf;
   }
+
   public String getNomeCompleto() {
     return nomeCompleto;
   }
+
   public String getSenha() {
     return senha;
   }
+
   public ArrayList<Conta> getContas() {
     return contas;
   }
