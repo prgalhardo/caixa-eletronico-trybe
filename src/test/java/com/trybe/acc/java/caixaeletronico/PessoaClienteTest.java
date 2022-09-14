@@ -1,5 +1,6 @@
 package com.trybe.acc.java.caixaeletronico;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.DisplayName;
@@ -7,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @DisplayName("Teste dos métodos da classe PessoaCliente")
 class PessoaClienteTest {
@@ -54,21 +57,44 @@ class PessoaClienteTest {
   @Test
   @DisplayName("15 - Testa o método retornar id de uma conta específica da pessoa cliente.")
   void retornarIdContaEspecificaTest() {
-    fail("Não implementado");
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    pessoaCliente.adicionarConta(conta);
+    String idConta = conta.getIdConta();
 
+    assertEquals(idConta, pessoaCliente.retornarIdContaEspecifica(0));
   }
 
   @Test
   @DisplayName("16 - Testa o método retornar o extrato de uma conta específica da pessoa cliente.")
   void retornarExtratoContaEspecificaTest() {
-    fail("Não implementado");
+    ByteArrayOutputStream saida = new ByteArrayOutputStream();
+    PrintStream impressao = System.out;
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    Transacao transacao = new Transacao(100.00, "Depósito");
+    System.setOut(new PrintStream(saida));
 
+    conta.adicionarTransacao(100.00, "Depósito");
+    pessoaCliente.adicionarConta(conta);
+    pessoaCliente.retornarExtratoContaEspecifica(0);
+
+    assertTrue(saida.toString().contains(transacao.retornarInstante()));
+    assertTrue(saida.toString().contains("Depósito"));
+
+    System.setOut(impressao);
   }
 
   @Test
   @DisplayName("17 - Testa o método adiciona transacao de uma conta específica da pessoa cliente.")
   void adicionarTransacaoContaEspecificaTest() {
-    fail("Não implementado");
+    Banco banco = new Banco();
+    PessoaCliente pessoaCliente = new PessoaCliente(nomeCompleto, cpf, senha);
+    Conta conta = new Conta(tipoConta, pessoaCliente, banco);
+    pessoaCliente.adicionarConta(conta);
+    pessoaCliente.adicionarTransacaoContaEspecifica(0, 500.00, "Depósito realizado.");
 
   }
 

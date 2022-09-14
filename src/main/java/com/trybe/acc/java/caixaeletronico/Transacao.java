@@ -27,7 +27,10 @@ public class Transacao {
    * Método: retornarResumoTransacao.
    */
   public String retornarResumoTransacao() {
-    return instante + quantia + descricao;
+    StringBuilder resumoTransacao = new StringBuilder();
+    resumoTransacao.append(descricao).append("de ").append(String.format("%, .2f", quantia))
+            .append(" realizado em ").append(instante);
+    return resumoTransacao.toString();
   }
 
   /**
@@ -37,5 +40,9 @@ public class Transacao {
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     return LocalDateTime.now().format(formato);
   }
+
+  /**
+   * Método:
+   */
 }
 
